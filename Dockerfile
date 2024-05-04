@@ -24,7 +24,7 @@ RUN javac --release 11 run.java
 
 RUN jar cfe main.jar Main Main.class
 
-FROM gcr.io/distroless/java11-debian11:latest
+FROM gcr.io/distroless/java11-debian11:nonroot
 
 WORKDIR /app
 

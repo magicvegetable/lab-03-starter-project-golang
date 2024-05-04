@@ -20,11 +20,11 @@ WORKDIR /app
 
 COPY run.java /app
 
-RUN javac --release 11 run.java
+RUN javac --release 17 run.java
 
 RUN jar cfe main.jar Main Main.class
 
-FROM gcr.io/distroless/java11-debian11:debug-nonroot
+FROM gcr.io/distroless/java17-debian11:latest
 
 WORKDIR /app
 

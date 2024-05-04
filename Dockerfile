@@ -14,12 +14,25 @@ RUN go mod tidy
 
 RUN go build -o build/fizzbuzz
 
-FROM gcr.io/distroless/java-base-debian12:debug-nonroot
+FROM openjdk:23-ea-17-jdk-bullseye as java-build
+
+WORKDIR /app
+
+COPY run.java /app
+
+RUN javac --release 11 run.java
+
+RUN jar cfe main.jar Main Main.class
+
+FROM gcr.io/distroless/java11-debian11:latest
 
 WORKDIR /app
 
 COPY --from=build /app/build /app/build
 
+COPY --from=java-build /app/main.jar /app
+
 COPY templates /app/templates
 
-CMD ["./build/fizzbuzz", "serve"]
+CMD ["main.jar"]
+

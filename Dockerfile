@@ -14,7 +14,7 @@ RUN go mod tidy
 
 RUN go build -o build/fizzbuzz
 
-FROM gcr.io/distroless/base-nossl-debian12:latest
+FROM gcr.io/distroless/base-nossl-debian12:nonroot
 
 WORKDIR /app
 

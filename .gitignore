@@ -111,3 +111,4 @@ fabric.properties
 # Compiled binaries
 fizzbuzz
 build/*
+go.cast

@@ -24,7 +24,7 @@ RUN javac --release 17 run.java
 
 RUN jar cfe main.jar Main Main.class
 
-FROM gcr.io/distroless/java17-debian11:nonroot
+FROM gcr.io/distroless/java17-debian11:debug
 
 WORKDIR /app
 

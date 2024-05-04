@@ -14,7 +14,7 @@ RUN go mod tidy
 
 RUN go build -o build/fizzbuzz
 
-FROM gcr.io/distroless/nodejs22-debian12:debug-nonroot
+FROM gcr.io/distroless/python3-debian11:latest
 
 WORKDIR /app
 
@@ -22,6 +22,6 @@ COPY --from=build /app/build /app/build
 
 COPY templates /app/templates
 
-COPY run.js package.json /app
+COPY run.py /app
 
-CMD ["run.js"]
+CMD ["run.py"]
